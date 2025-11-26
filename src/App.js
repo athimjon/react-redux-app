@@ -1,9 +1,10 @@
 import { Route, Routes } from 'react-router-dom'
-import { Login, Main, Register } from './components/index'
+import { Login, Main, Navbar, Register } from './components/index'
 
 const App = () => {
 	return (
 		<div>
+			<Navbar />
 			<Routes>
 				<Route path='/' element={<Main />} />
 				<Route path='/register' element={<Register />} />
