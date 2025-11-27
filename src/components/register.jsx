@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { icon } from '../constants'
+import { registerUserStart } from '../slice/auth'
 import { Input } from '../ui'
 
 const Register = () => {
@@ -7,6 +9,13 @@ const Register = () => {
 	const [password, setPassword] = useState('')
 	const [email, seteEmail] = useState('')
 
+	const dispatch = useDispatch()
+	const { isLoading } = useSelector(state => state.auth)
+
+	const registerHandler = e => {
+		e.preventDefault()
+		dispatch(registerUserStart())
+	}
 	return (
 		<div className='text-center'>
 			<main className='form-signin w-25 m-auto'>
@@ -38,8 +47,13 @@ const Register = () => {
 						setState={setPassword}
 					/>
 
-					<button className='btn btn-primary w-100 py-2 mt-3' type='submit'>
-						Sign Up
+					<button
+						disabled={isLoading}
+						onClick={registerHandler}
+						className='btn btn-primary w-100 py-2 mt-3'
+						type='submit'
+					>
+						{isLoading ? 'Loading...' : 'Sign Up'}
 					</button>
 				</form>
 			</main>
