@@ -3,7 +3,7 @@ import { logo } from '../constants'
 
 const Navbar = () => {
 	return (
-		<div class='d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom container pt-3'>
+		<div className='d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom container pt-3'>
 			<Link to={'/'}>
 				<img
 					width={'135px'}
@@ -13,7 +13,7 @@ const Navbar = () => {
 					alt='Logo not Found!'
 				/>
 			</Link>
-			<nav class='d-inline-flex mt-2 mt-md-0 ms-md-auto'>
+			<nav className='d-inline-flex mt-2 mt-md-0 ms-md-auto'>
 				<Link
 					to={'/register'}
 					className='me-3 py-2 link-body-emphasis text-decoration-none'

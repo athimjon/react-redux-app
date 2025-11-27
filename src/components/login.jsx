@@ -1,24 +1,34 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { icon } from '../constants'
+import { loginUserStart } from '../slice/auth'
 import { Input } from '../ui'
 
 const Login = () => {
 	const [password, setPassword] = useState('')
 	const [email, seteEmail] = useState('')
 
+	const dispatch = useDispatch()
+	const { isLoading } = useSelector(state => state.auth)
+
+	const loginHandler = e => {
+		e.preventDefault()
+		dispatch(loginUserStart())
+	}
+
 	return (
 		<div className='text-center'>
-			<main class='form-signin w-25 m-auto'>
+			<main className='form-signin w-25 m-auto'>
 				<form>
 					<img
-						class='mb-4'
+						className='mb-4'
 						src={icon}
 						alt=''
 						width='75'
 						height={'70'}
 						style={{ borderRadius: '12px' }}
 					/>
-					<h1 class='h3 mb-3 fw-normal'>Sign in to Sammi</h1>
+					<h1 className='h3 mb-3 fw-normal'>Sign in to Foodz </h1>
 					<p className='mb-4'>Welcome back! Please sign in to continue</p>
 					<Input
 						type={'email'}
@@ -32,8 +42,13 @@ const Login = () => {
 						state={password}
 						setState={setPassword}
 					/>
-					<button class='btn btn-primary w-100 py-2 mt-3' type='submit'>
-						Sign In
+					<button
+						onClick={loginHandler}
+						disabled={isLoading}
+						className='btn btn-primary w-100 py-2 mt-3'
+						type='submit'
+					>
+						{isLoading ? 'Loading...' : 'Sign In'}
 					</button>
 				</form>
 			</main>
