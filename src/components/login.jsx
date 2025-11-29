@@ -32,7 +32,7 @@ const Login = () => {
 
 	useEffect(() => {
 		if (isLoggedIn) navigate('/')
-	}, [])
+	}, [isLoggedIn])
 
 	return (
 		<div className='text-center'>
