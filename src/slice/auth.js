@@ -15,6 +15,7 @@ export const authSlice = createSlice({
 		},
 		authSuccess: (state, action) => {
 			state.user = action.payload
+			localStorage.setItem('fz-token', action.payload.token)
 			state.isLoggedIn = true
 			state.isLoading = false
 		},
