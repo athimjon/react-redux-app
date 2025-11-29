@@ -4,6 +4,7 @@ import { icon } from '../constants'
 import AuthService from '../service/auth'
 import { authFailure, authStart, authSuccess } from '../slice/auth'
 import { Input } from '../ui'
+import { ValidationError } from './'
 
 const Register = () => {
 	const [name, setName] = useState('')
@@ -41,7 +42,7 @@ const Register = () => {
 					<p className='mb-4'>
 						Welcome! Please fill in the details to get started.
 					</p>
-
+					<ValidationError />
 					<Input label={'Username'} state={name} setState={setName} />
 					<Input
 						type={'email'}

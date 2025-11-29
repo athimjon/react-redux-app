@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { icon } from '../constants'
 import AuthService from '../service/auth'
+import { ValidationError } from './'
 
 import { authFailure, authStart, authSuccess } from '../slice/auth'
 import { Input } from '../ui'
@@ -40,6 +41,7 @@ const Login = () => {
 					/>
 					<h1 className='h3 mb-3 fw-normal'>Sign in to Foodz </h1>
 					<p className='mb-4'>Welcome back! Please sign in to continue</p>
+					<ValidationError />
 					<Input
 						type={'email'}
 						label={'Email address'}
