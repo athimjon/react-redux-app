@@ -1,8 +1,11 @@
 import { useSelector } from 'react-redux'
+import { Loader } from '../ui/index'
 
 const Main = () => {
-	const { articles } = useSelector(state => state.article)
-	return (
+	const { articles, isLoading } = useSelector(state => state.article)
+	return isLoading ? (
+		<Loader />
+	) : (
 		<div className='container'>
 			<div className='album py-5 bg-body-tertiary'>
 				<div className='container'>
@@ -21,34 +24,34 @@ const Main = () => {
 										}}
 									/>
 									<div className='card-body'>
-										<p className='card-text fw-bold'>{item.title}</p>
+										<p className='card-text fw-bold m-0'>{item.title}</p>
 										<p className='card-text'>{item.description}</p>
-										<div className='d-flex justify-content-between align-items-center'>
-											<div className='btn-group'>
-												<button
-													type='button'
-													className='btn btn-sm btn-outline-success'
-												>
-													View
-												</button>
-												<button
-													type='button'
-													className='btn btn-sm btn-outline-primary'
-												>
-													Edit
-												</button>
-												<button
-													type='button'
-													className='btn btn-sm btn-outline-danger'
-												>
-													Delete
-												</button>
-											</div>
-											<small className='text-body-secondary fw-bold fst-italic text-capitalize'>
-												Author{' : '}
-												{item.author.username}
-											</small>
+									</div>
+									<div className='card-footer d-flex justify-content-between align-items-center'>
+										<div className='btn-group'>
+											<button
+												type='button'
+												className='btn btn-sm btn-outline-success'
+											>
+												View
+											</button>
+											<button
+												type='button'
+												className='btn btn-sm btn-outline-primary'
+											>
+												Edit
+											</button>
+											<button
+												type='button'
+												className='btn btn-sm btn-outline-danger'
+											>
+												Delete
+											</button>
 										</div>
+										<small className='text-body-secondary fw-bold fst-italic text-capitalize'>
+											Author{' : '}
+											{item.author.username}
+										</small>
 									</div>
 								</div>
 							</div>
