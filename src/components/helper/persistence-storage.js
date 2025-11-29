@@ -9,7 +9,6 @@ export const setItem = (key, data) => {
 export const getItem = key => {
 	try {
 		const token = localStorage.getItem(key)
-		console.log(token)
 		return token
 	} catch (error) {
 		console.log(`ERROR getting data from LocalStorage ${error}`)
