@@ -5,8 +5,9 @@ const ArticleService = {
 		return data
 	},
 	async getArticleDetail(slug) {
-		const { data } = await axios.get(`/articles/${slug}`)
-		return data
+		const response = await axios.get(`/articles/${slug}`)
+		console.log(`API DETAIL : ${response}`)
+		return response.data
 	},
 }
 export default ArticleService

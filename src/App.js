@@ -30,7 +30,6 @@ const App = () => {
 		dispatch(getArticlesStart())
 		try {
 			const response = await ArticleService.getArticles()
-			console.log(response)
 			dispatch(getArticesSuccess(response.articles))
 		} catch (error) {
 			console.log(`Error fetching articles ${error}`)
