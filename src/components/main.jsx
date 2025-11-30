@@ -1,14 +1,17 @@
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { Loader } from '../ui/index'
 
 const Main = () => {
 	const { articles, isLoading } = useSelector(state => state.article)
+
+	const navigate = useNavigate()
 	return isLoading ? (
 		<Loader />
 	) : (
-		<div className='container'>
+		<>
 			<div className='album py-5 bg-body-tertiary'>
-				<div className='container'>
+				<div>
 					<div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3'>
 						{articles.map(item => (
 							<div className='col' key={item.id}>
@@ -32,6 +35,9 @@ const Main = () => {
 											<button
 												type='button'
 												className='btn btn-sm btn-outline-success'
+												onClick={() => {
+													navigate(`/article/${item.slug}`)
+												}}
 											>
 												View
 											</button>
@@ -59,7 +65,7 @@ const Main = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	)
 }
 
