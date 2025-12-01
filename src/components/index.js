@@ -1,4 +1,6 @@
 export { default as ArticleDetail } from './article-detail'
+export { default as Form } from './article-form.jsx'
+export { default as CreateArticle } from './create-article'
 export { default as Login } from './login'
 export { default as Main } from './main'
 export { default as Navbar } from './navbar'

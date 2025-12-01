@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom'
 import { getItem } from './components/helper/persistence-storage'
 import {
 	ArticleDetail,
+	CreateArticle,
 	Login,
 	Main,
 	Navbar,
@@ -51,6 +52,7 @@ const App = () => {
 					<Route path='/register' element={<Register />} />
 					<Route path='/login' element={<Login />} />
 					<Route path='/article/:slug' element={<ArticleDetail />} />
+					<Route path='/create-article' element={<CreateArticle />} />
 				</Routes>
 			</div>
 		</div>
