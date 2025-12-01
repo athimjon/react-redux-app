@@ -7,6 +7,7 @@ import { Loader } from '../ui/index'
 const Main = () => {
 	const dispatch = useDispatch()
 	const { articles, isLoading } = useSelector(state => state.article)
+	const { user, isLoggedIn } = useSelector(state => state.auth)
 
 	const navigate = useNavigate()
 
@@ -23,6 +24,15 @@ const Main = () => {
 	useEffect(() => {
 		getArticles()
 	}, [])
+
+	const deleteArticle = async slug => {
+		try {
+			await ArticleService.deleteArticle(slug)
+			getArticles()
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 	return isLoading ? (
 		<Loader />
@@ -59,18 +69,23 @@ const Main = () => {
 											>
 												View
 											</button>
-											<button
-												type='button'
-												className='btn btn-sm btn-outline-primary'
-											>
-												Edit
-											</button>
-											<button
-												type='button'
-												className='btn btn-sm btn-outline-danger'
-											>
-												Delete
-											</button>
+											{isLoggedIn && user.username === item.author.username && (
+												<>
+													<button
+														type='button'
+														className='btn btn-sm btn-outline-primary'
+													>
+														Edit
+													</button>
+													<button
+														type='button'
+														className='btn btn-sm btn-outline-danger'
+														onClick={() => deleteArticle(item.slug)}
+													>
+														Delete
+													</button>
+												</>
+											)}
 										</div>
 										<small className='text-body-secondary fw-bold fst-italic text-capitalize'>
 											Author{' : '}
