@@ -5,6 +5,7 @@ import { getItem } from './components/helper/persistence-storage'
 import {
 	ArticleDetail,
 	CreateArticle,
+	EditArticle,
 	Login,
 	Main,
 	Navbar,
@@ -40,6 +41,7 @@ const App = () => {
 					<Route path='/login' element={<Login />} />
 					<Route path='/article/:slug' element={<ArticleDetail />} />
 					<Route path='/create-article' element={<CreateArticle />} />
+					<Route path='/edit-article/:slug' element={<EditArticle />} />
 				</Routes>
 			</div>
 		</div>
