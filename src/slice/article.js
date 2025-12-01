@@ -35,6 +35,17 @@ export const articleSlice = createSlice({
 			state.error = action.payload || 'Failed to load article'
 			state.articleDetail = null
 		},
+		postArticleStart: state => {
+			state.isLoading = true
+		},
+
+		postArticleSuccess: state => {
+			state.isLoading = false
+		},
+		postArticleFailure: (state, action) => {
+			state.error = action.payload
+			state.isLoading = false
+		},
 	},
 })
 
@@ -46,4 +57,7 @@ export const {
 	getArticleDetailStart,
 	getArticleDetailSuccess,
 	getArticleDetailFailure,
+	postArticleStart,
+	postArticleSuccess,
+	postArticleFailure,
 } = articleSlice.actions

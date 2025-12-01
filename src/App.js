@@ -10,9 +10,7 @@ import {
 	Navbar,
 	Register,
 } from './components/index'
-import ArticleService from './service/article'
 import AuthService from './service/auth'
-import { getArticesSuccess, getArticlesStart } from './slice/article'
 import { authSuccess } from './slice/auth'
 
 const App = () => {
@@ -27,20 +25,9 @@ const App = () => {
 		}
 	}
 
-	const getArticles = async () => {
-		dispatch(getArticlesStart())
-		try {
-			const response = await ArticleService.getArticles()
-			dispatch(getArticesSuccess(response.articles))
-		} catch (error) {
-			console.log(`Error fetching articles ${error}`)
-		}
-	}
 	useEffect(() => {
 		const token = getItem('fz-token')
 		if (token) getUser()
-
-		getArticles()
 	}, [])
 
 	return (

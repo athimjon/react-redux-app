@@ -9,5 +9,9 @@ const ArticleService = {
 		console.log(`API DETAIL : ${response}`)
 		return response.data
 	},
+	async postArticle(article) {
+		const { data } = await axios.post(`/articles`, { article })
+		return data
+	},
 }
 export default ArticleService
